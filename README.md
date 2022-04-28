@@ -22,15 +22,37 @@
 
 Nessa postagem criamos um CRUD de usuários com o GraphQL utilizando o framework [Nest](https://nestjs.com/). Assim podemos criar, deletar, pesquisar e atualizar uma tabela de usuários no banco de dados. Usamos também o [Prisma](https://www.prisma.io/) como ORM e criamos um container com o banco de dados postgres usando o [Docker Compose](https://docs.docker.com/compose/).
 
-Criamos um schema bem simples no arquivo <strong>schema.prisma</strong> para criação de um usuário no banco de dados:
+## Instalação
 
-```prisma
-model User {
-  id    Int    @id @default(autoincrement())
-  email String @unique
-  name  String
-}
+```bash
+# Instalação das dependências
+$ yarn
 
+# Iniciar container com banco de dados postgress (Você precisa ter o docker instalado!):
+$ yarn up:db
+
+# Migração dos models definidos no schema.prisma para o banco de dados
+$ yarn prisma migrate dev
+```
+
+## Iniciando o servidor
+
+```bash
+# development
+$ yarn start
+
+# watch mode
+$ yarn start:dev
+
+# production mode
+$ yarn start:prod
+```
+
+## Observação
+
+```bash
+# Para remover o container criado:
+$ yarn rm:db
 ```
 
 ## Routes
@@ -122,39 +144,6 @@ mutation {
     email
   }
 }
-```
-
-## Instalação
-
-```bash
-# Instalação das dependências
-$ yarn
-
-# Iniciar container com banco de dados postgress (Você precisa ter o docker instalado!):
-$ yarn up:db
-
-# Migração dos models definidos no schema.prisma para o banco de dados
-$ yarn prisma migrate dev
-```
-
-## Iniciando o servidor
-
-```bash
-# development
-$ yarn start
-
-# watch mode
-$ yarn start:dev
-
-# production mode
-$ yarn start:prod
-```
-
-## Observação
-
-```bash
-# Para remover o container criado:
-$ yarn rm:db
 ```
 
 ## **👨‍🚀 Autor**
