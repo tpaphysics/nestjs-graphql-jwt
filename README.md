@@ -71,9 +71,9 @@ input UpdateUserInput {
 }
 ```
 
-<img src=".assets/playground.png" alt="Playground GraphQL Apollo"/>
-
 Abra o navegador em http://localhost:3000/graphql e realize as chamadas abaixo:
+
+<img src=".assets/playground.png" alt="Playground GraphQL Apollo"/>
 
 ```graphql
 #createUser
