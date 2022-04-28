@@ -1,7 +1,10 @@
-import { InputType, Int, Field } from '@nestjs/graphql';
+import { InputType, Field } from '@nestjs/graphql';
+import { User } from '../entities/user.entity';
 
 @InputType()
-export class CreateUserInput {
-  @Field(() => Int, { description: 'Example field (placeholder)' })
-  exampleField: number;
+export class CreateUserInput extends User {
+  @Field()
+  name: string;
+  @Field()
+  email: string;
 }
