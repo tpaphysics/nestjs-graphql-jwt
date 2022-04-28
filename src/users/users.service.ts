@@ -8,13 +8,13 @@ export class UsersService {
   constructor(private readonly prisma: PrismaService) {}
 
   async create(data: CreateUserInput) {
-    return this.prisma.user.create({
+    return await this.prisma.user.create({
       data,
     });
   }
 
-  findAll() {
-    return `This action returns all users`;
+  async findAll() {
+    return await this.prisma.user.findMany();
   }
 
   findOne(id: number) {
