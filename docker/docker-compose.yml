@@ -1,0 +1,13 @@
+version: '3.3'
+services:
+  postgres:
+    container_name: postgres
+    image: postgres:latest
+    restart: always
+    environment:
+      - POSTGRES_USER=${USER_DATABASE}
+      - POSTGRES_PASSWORD=${PASSWORD_DATABASE}
+    #volumes:
+    # - ./db:/var/lib/postgresql/data
+    ports:
+      - '5432:5432'
