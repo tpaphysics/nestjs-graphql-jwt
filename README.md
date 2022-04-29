@@ -61,10 +61,10 @@ $ yarn rm:db
 ```
 Mapped {/graphql, POST} route +1ms
 ```
-
-Diferentemente das Rest APIs onde existem os métodos get, post, path, update, delete em uma API QraphQL existe somente o método post com <strong>querys</strong> e <strong>mutations</strong>.
+Diferentemente das APIs Rest onde existem os métodos get, post, delete, update e path, em uma API do tipo GraphQL existe somente uma rota com o método post com <strong>querys</strong> e <strong>mutations</strong>.
 
 ```graphql
+#Schema.gql  
 type User {
   id: ID!
   email: String!
@@ -98,8 +98,8 @@ Para realizar as querys e mutations abra o navegador em http://localhost:3000/gr
 
 <img src=".assets/playground.png" alt="Playground GraphQL Apollo"/>
 
+## createUser
 ```graphql
-#createUser
 mutation {
   createUser(
     createUserInput: { name: "tpaphysics", email: "tpaphysics@t.com" }
@@ -109,8 +109,9 @@ mutation {
     email
   }
 }
-
-#findAll
+```
+## findAll
+```graphql
 query {
   users {
     id
@@ -118,8 +119,9 @@ query {
     name
   }
 }
-
-#findOne
+```
+## findOne
+```graphql  
 query {
   user(id: 12) {
     id
@@ -127,8 +129,9 @@ query {
     name
   }
 }
-
-#updateUser
+```
+## updateUser  
+```graphql
 mutation {
   updateUser(updateUserInput: { id: 1, name: "tpaphysics" }) {
     id
@@ -136,8 +139,9 @@ mutation {
     email
   }
 }
-
-#removeUser
+```
+## removeUser
+```graphql
 mutation {
   removeUser(id: 2) {
     id
