@@ -6,11 +6,15 @@ import { User } from '../entities/user.entity';
 export class CreateUserInput extends User {
   @Field(() => String)
   @IsString()
-  @Matches(/[a-zA-Z0-9_-]{2,20}/)
+  //@Matches(/[a-zA-Z0-9_-]{2,20}/)
   name: string;
 
-  @Field()
+  @Field(() => String)
   @IsString()
-  @IsEmail(() => String)
+  //@IsEmail(() => String)
   email: string;
+
+  @Field(() => String)
+  @IsString()
+  password: string;
 }
