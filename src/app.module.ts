@@ -4,6 +4,7 @@ import { AuthModule } from './auth/auth.module';
 import { GraphQLModule } from '@nestjs/graphql';
 import { ApolloDriver, ApolloDriverConfig } from '@nestjs/apollo';
 import { join } from 'path';
+import { APP_GUARD } from '@nestjs/core';
 
 @Module({
   imports: [
@@ -16,6 +17,5 @@ import { join } from 'path';
     }),
   ],
   controllers: [],
-  providers: [],
 })
 export class AppModule {}
