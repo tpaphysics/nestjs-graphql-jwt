@@ -15,13 +15,13 @@ type AuthResponse {
 
 type Query {
   findAllUsers: [User!]!
-  findOneUsers(id: Int!): User!
+  findOneUsers(id: ID!): User!
 }
 
 type Mutation {
   createUser(createUserInput: CreateUserInput!): User!
   updateUser(updateUserInput: UpdateUserInput!): User!
-  removeUser(id: Int!): User!
+  removeUser(id: ID!): User!
   authenticate(authInput: AuthInput!): AuthResponse!
 }
 
@@ -32,7 +32,7 @@ input CreateUserInput {
 }
 
 input UpdateUserInput {
-  id: Int!
+  id: ID!
   email: String
   name: String
   password: String

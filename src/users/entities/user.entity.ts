@@ -4,7 +4,7 @@ import { Prisma } from '@prisma/client';
 @ObjectType()
 export class User implements Prisma.UserUncheckedCreateInput {
   @Field(() => ID)
-  id?: number;
+  id: string;
 
   @Field(() => String)
   email: string;
