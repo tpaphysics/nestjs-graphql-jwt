@@ -16,7 +16,7 @@ export class UsersResolver {
     return this.usersService.create(createUserInput);
   }
 
-  @UseGuards(GqlAuthGuard)
+  //@UseGuards(GqlAuthGuard)
   @Query(() => [User], { name: 'findAllUsers' })
   findAll() {
     return this.usersService.findAll();
