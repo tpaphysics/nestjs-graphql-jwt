@@ -148,7 +148,7 @@ Acesse a aba Docs no playground para mais informações.
 
 ## Upload de arquivos
 
-Faça login, obtenha um token valido e execute o script abaixo que esta no diretorio corrente do projeto, uploadRequest.sh:
+Faça login, obtenha um token valido e execute o script abaixo, uploadRequest.sh:
 
 ```sh
 token="eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxZDI0MzM2ZC05ZWJlLTRiYzYtOTJiNi05MjhmZTAxY2FlYjIiLCJlbWFpbCI6ImRhcnRoIiwibmFtZSI6ImRhcnRoIiwiaWF0IjoxNjUyMjgzMTIwLCJleHAiOjE2NTQ4NzUxMjB9.QC4HfEZLyvHSXoaIQVKgKubNUzOhiJJustcwFfz4Kc0"

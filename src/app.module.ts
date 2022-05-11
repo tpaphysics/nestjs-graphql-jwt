@@ -7,11 +7,13 @@ import { join } from 'path';
 import { APP_GUARD } from '@nestjs/core';
 import { PrismaService } from 'prisma/prisma.service';
 import { JwtAuthGuard } from './auth/gards/jwt-auth.guard';
+import { UploadsModule } from './uploads/uploads.module';
 
 @Module({
   imports: [
     UsersModule,
     AuthModule,
+    UploadsModule,
     GraphQLModule.forRoot<ApolloDriverConfig>({
       driver: ApolloDriver,
       context: ({ req }) => ({ req }),
