@@ -143,8 +143,8 @@ curl http://localhost:3000/graphql \
 Após a execução do script o arquivo README.md estará na pasta uploads.
 
 ## **💥 Considerações**
-A arbodagem das APIs graphql é bem diferente do padrão REST. No padrão REST temos os métodos GET, POST, PUT, DELETE, UPDATE. Enquanto que no graphql existe somente o método POST com o conceito de query e mutation. O graphql se destaca em resover os problemas de over-fetching e under-fetching.
-Lembramos que não devemos ser amantes de tecnologias, pois elas sempre mudam. Devdemos escolher a tecnologia que melhor se adapta ao nosso problema.
+A arbodagem das APIs GraphQL é bem diferente do padrão REST. No padrão REST temos os métodos **GET**, **POST**, **PUT**, **DELETE**, **UPDATE**. Enquanto que no padrão GraphQL existe somente o método **POST** com o conceito de **QUERY** e **MUTATION**. O GraphQL se destaca em resover os problemas de over-fetching e under-fetching, recocorrente em grandes projetos, com um número muito grande de usuários, quando se utiliza o padrão REST.
+Na minha opiniçao não devemos ser amantes de tecnologias, pois elas sempre mudam com o tempo. Devemos escolher a tecnologia que melhor se adapta ao nosso problema.
 
 ## **👨‍🚀 Autor**
 
