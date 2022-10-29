@@ -1,12 +1,4 @@
 <p align="center">
-  <a href="http://nestjs.com/" target="blank"><img src="https://nestjs.com/img/logo-small.svg" width="200" alt="Nest Logo" /></a>
-</p>
-  
-[circleci-image]: https://img.shields.io/circleci/build/github/nestjs/nest/master?token=abc123def456
-[circleci-url]: https://circleci.com/gh/nestjs/nest
-  
-  <p align="center">A progressive <a href="http://nodejs.org" target="_blank">Node.js</a> framework for building efficient and scalable server-side applications.</p>
-    <p align="center">
 <img src="https://img.shields.io/badge/yarn-%232C8EBB.svg?style=for-the-badge&logo=yarn&logoColor=white" alt="yarn" />
   
 <img src="https://img.shields.io/badge/nestjs-%23E0234E.svg?style=for-the-badge&logo=nestjs&logoColor=white" alt="NestJs" />
@@ -20,70 +12,56 @@
 <img src="https://img.shields.io/badge/postgres-%23316192.svg?style=for-the-badge&logo=postgresql&logoColor=white" alt="Postgres" />
   
 <img src="https://img.shields.io/badge/-Swagger-%23Clojure?style=for-the-badge&logo=swagger&logoColor=white" alt="Prisma" />
+</p>
   
-##  Descrição
+## **💻 Projeto**
+
+Criamos uma API GraphQL com autenticação JWT utilizando o framework [Nest](https://nestjs.com/). Assim um usuário autenticado poderá criar, deletar, pesquisar e atualizar uma tabela de usuários no banco de dados. Usamos também o [Prisma](https://www.prisma.io/) como ORM e criamos um container com o banco de dados postgres usando o [Docker Compose](https://docs.docker.com/compose/).
   
-  
-Nessa postagem criamos uma API GraphQL com com fluxo de autenticação jwt e CRUD de usários utilizando o framework [Nest](https://nestjs.com/). Assim um usuário autenticado poderá criar, deletar, pesquisar e atualizar uma tabela de usuários no banco de dados. Usamos também o [Prisma](https://www.prisma.io/) como ORM e criamos um container com o banco de dados postgres usando o [Docker Compose](https://docs.docker.com/compose/)
-  
-##  Instalação
-  
+## **🚀 Get Started**
   
 ```bash
-# Instalação das dependências
+# Dependências
 $ yarn
   
-# Iniciar container com banco de dados postgress (Você precisa ter o docker instalado!):
+# Container com banco de dados postgress.
 $ yarn up:db
   
-# Migração dos models definidos no schema.prisma para o banco de dados
+# Migração dos models definidos no schema.prisma
 $ yarn prisma migrate dev
-```
-  
-##  Iniciando o servidor
-  
-  
-```bash
-# development
-$ yarn start
-  
+
 # watch mode
 $ yarn start:dev
-  
-# production mode
-$ yarn start:prod
 ```
+
 Para remover o container com o postgres:
 ```bash
 $ yarn rm:db
 ```
 
-## Rotas
+## **🛣️ Rotas**
 
-Para acessar o playground:
+Acesse o playground:
 
 ```url
 http://localhost:3000/graphql
 ```
+No playgorund temos um cliente http e a documentação da API gerada automaticamente.
 
-Diferentemente das APIs Rest, uma API do tipo GraphQL existe somente uma rota com o método post com <strong>querys</strong> e <strong>mutations</strong>. No playgorund temos um cliente http e a documentação da API gerada automaticamente.
-
-## Observação
+## **🔎 Observações**
 
 Somente as mutations authenticate e createUsers são públicas. Para tornar todas as querys e mutations públicas basta colocar o decorator <strong>@IsPublicRoute()</strong> no UsersResolver como no exemplo abaixo:
 
 ```typescript
-@IsPublicRoute() #aqui
+@IsPublicRoute()
 
 export class UsersResolver {
   constructor(private readonly usersService: UsersService) {}
-  ... ... ... ...
-  ... ... ... ...
+  ...//more
+}
+
 ```
-
-## Criação de usuários
-
-Agora você deve criar pelo menos um usuário no banco de dados.
+Você deve criar pelo menos um usuário.
 
 Usando o playground:
 
@@ -97,9 +75,9 @@ Realize a mutation:
 mutation {
   createUser(
     createUserInput: {
-      name: "dart"
-      email: "darth@vader.com"
-      password: "yoda"
+      name: "R2D2"
+      email: "r2d2@star.com"
+      password: "r2d2"
     }
   ) {
     id
@@ -109,11 +87,11 @@ mutation {
 }
 ```
 
-## Login
+## **🔒 Login**
 
 ```graphql
 mutation {
-  authenticate(authInput: { email: "darth@vader.com", password: "yoda" }) {
+  authenticate(authInput: { email: "r2d2@star.com", password: "r2d2" }) {
     user {
       id
       email
@@ -124,7 +102,7 @@ mutation {
 }
 ```
 
-Você recebera a resposta (exemplo):
+Você recebera a resposta algo do tipo
 
 ```graphql
 {
@@ -132,26 +110,24 @@ Você recebera a resposta (exemplo):
     "authenticate": {
       "user": {
         "id": "cl2vf150x0007qvqm2m15wf5f",
-        "email": "darth@vader.com",
-        "name": "dart"
+        "email": "r2d2@star.com",
+        "name": "R2D2"
       },
       "access_token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJjbDJ2ZjE1MHgwMDA3cXZxbTJtMTV3ZjVmIiwiZW1haWwiOiJkYXJ0aEB2YWRlci5jb20iLCJuYW1lIjoiZGFydCIsImlhdCI6MTY1MTkwMDg1NiwiZXhwIjoxNjU0NDkyODU2fQ.6MdzP1bktgtIL0xWqiPDl0NtP6g69u1cjnjYIH3aOzI"
     }
   }
 }
 ```
-
-Após efetuar login copie o access_token gerado no header:
+Agora copie o access_token gerado no header:
 
 <img src="./.assets/playground-gql.png"/>
-Acesse a aba Docs no playground para mais informações.
 
-## Upload de arquivos
+## **📁 Upload de arquivos**
 
 Faça login, obtenha um token valido e execute o script abaixo que esta no diretorio corrente do projeto, uploadRequest.sh:
 
 ```sh
-token="eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxZDI0MzM2ZC05ZWJlLTRiYzYtOTJiNi05MjhmZTAxY2FlYjIiLCJlbWFpbCI6ImRhcnRoIiwibmFtZSI6ImRhcnRoIiwiaWF0IjoxNjUyMjgzMTIwLCJleHAiOjE2NTQ4NzUxMjB9.QC4HfEZLyvHSXoaIQVKgKubNUzOhiJJustcwFfz4Kc0"
+token="seu_token"
 path="./README.md"
 
 curl http://localhost:3000/graphql \
@@ -167,45 +143,8 @@ curl http://localhost:3000/graphql \
 Após a execução do script o arquivo README.md estará na pasta uploads.
 
 ## **💥 Considerações**
-
-Existem muita vatagens na utilização do NestJs para criação de APIs uma delas é o fato dele respeitar os principios do <strong>SOLID</strong>. Desta forma forma fica mais facil a escalabilidade do projeto e o trabalho em grupo com uma aquitetura padrão definida. O NestJs usa uma aquitetura muito semelhante a do framework [Angular](https://angular.io/), com uso de decorators. Particularmente achei interessante a abordagem da biblioteca [class-validator](https://www.npmjs.com/package/class-validator) para validação de campos através de decorators nos Data Transfer Objects (DTOs) :
-
-```typescript
-import { User } from '../entities/user.entity';
-import {
-  IsEmail,
-  IsIn,
-  IsInt,
-  IsString,
-  Matches,
-  Max,
-  MaxLength,
-  Min,
-  MinLength,
-} from 'class-validator';
-
-export class CreateUserInput extends User {
-  @Field(() => String)
-  @IsString()
-  @IsEmail()
-  email: string;
-
-  @Field(() => String)
-  @IsString()
-  @Matches(/[a-zA-Z0-9_-]{2,20}/)
-  name: string;
-
-  @Field(() => String)
-  @MinLength(6)
-  @MaxLength(20)
-  @Matches(/((?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$/, {
-    message: 'Password too weak!',
-  })
-  password: string;
-}
-```
-
-Outro fator interressante é o tratamento de erros de forma global através da utilização de middlewares. Existem inumeras outras vantagens na utilização NestJs. Para mais informações, consulte a [documentação](https://nestjs.com/).
+A arbodagem das APIs graphql é bem diferente do padrão REST. No padrão REST temos os métodos GET, POST, PUT, DELETE, UPDATE. Enquanto que no graphql existe somente o método POST com o conceito de query e mutation. O graphql se destaca em resover os problemas de over-fetching e under-fetching.
+Lembramos que não devemos ser amantes de tecnologias, pois elas sempre mudam. Devdemos escolher a tecnologia que melhor se adapta ao nosso problema.
 
 ## **👨‍🚀 Autor**
 
