@@ -61,15 +61,14 @@ export class UsersResolver {
 }
 
 ```
-Você deve criar pelo menos um usuário.
+## **🔒 Login**
 
 Usando o playground:
 
 ```url
 http://localhost:3000/graphql
 ```
-
-Realize a mutation:
+Você deve criar um novo usuário.
 
 ```graphql
 mutation {
@@ -86,8 +85,7 @@ mutation {
   }
 }
 ```
-
-## **🔒 Login**
+Após criar o novo usuário, realize a mutation:
 
 ```graphql
 mutation {
@@ -102,7 +100,7 @@ mutation {
 }
 ```
 
-Você recebera a resposta algo do tipo
+Como resposta, receberá algo do tipo:
 
 ```graphql
 {
@@ -118,7 +116,7 @@ Você recebera a resposta algo do tipo
   }
 }
 ```
-Agora copie o access_token gerado no header:
+Copie e cole o access_token conforme a figura abaixo:
 
 <img src="./.assets/playground-gql.png"/>
 
@@ -143,7 +141,7 @@ curl http://localhost:3000/graphql \
 Após a execução do script o arquivo README.md estará na pasta uploads.
 
 ## **💥 Considerações**
-A arbodagem das APIs GraphQL é bem diferente do padrão REST. No padrão REST temos os métodos **GET**, **POST**, **PUT**, **DELETE**, **UPDATE**. Enquanto que no padrão GraphQL existe somente o método **POST** com o conceito de **QUERY** e **MUTATION**. O GraphQL se destaca em resover os problemas de over-fetching e under-fetching, recocorrente em grandes projetos, com um número muito grande de usuários, quando se utiliza o padrão REST.
+A arbodagem das APIs GraphQL é bem diferente do padrão REST. No padrão REST temos os métodos **GET**, **POST**, **PUT**, **DELETE**, **UPDATE**. Enquanto que no padrão GraphQL existe somente o método **POST** com o conceito de **QUERY** e **MUTATION**. O GraphQL se destaca em resover os problemas de over-fetching e under-fetching recocorrente em grandes projetos, com um número muito grande de usuários, quando comparado ao padrão REST.
 Na minha opiniçao não devemos ser amantes de tecnologias, pois elas sempre mudam com o tempo. Devemos escolher a tecnologia que melhor se adapta ao nosso problema.
 
 ## **👨‍🚀 Autor**
